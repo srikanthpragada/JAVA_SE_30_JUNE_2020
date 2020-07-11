@@ -58,7 +58,7 @@ public class TestStudent {
 		Student s;
 
 		s = new PythonStudent("Scott", "scott@yahoo.com", 89); // upcasting
-		// s = new JavaStudent("James", "james@gmail.com", 95);   // upcasting
+		s = new JavaStudent("James", "james@gmail.com", 95);   // upcasting
 		
 		JavaStudent js;
 		
