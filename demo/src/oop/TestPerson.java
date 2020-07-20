@@ -11,6 +11,11 @@ class Person {
 	}
 	
 	@Override
+	public int hashCode() {
+		return this.age;
+	}
+	
+	@Override
 	public String toString() {
 	     return  this.name + "," + this.age;
 	}
@@ -35,7 +40,13 @@ public class TestPerson {
     	System.out.println(p1 == p2);
     	System.out.println(p1.equals(p2));
     	System.out.println(p1.equals(p3));
+    	
+    	System.out.println(p1.hashCode());
+    	System.out.println(p2.hashCode());
+    	
     	System.out.println(p1.toString());
     	System.out.println(p1.equals("Abc"));
+    	
+    	
     }
 }
