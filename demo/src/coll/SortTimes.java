@@ -1,9 +1,8 @@
 package coll;
 
-import java.time.LocalTime;
-import java.util.HashSet;
+import java.util.TreeSet;
 
-class Time {
+class Time implements Comparable<Time> {
 	private int h, m, s;
 
 	public Time(int h, int m, int s) {
@@ -23,26 +22,41 @@ class Time {
 		Time other = (Time) obj;
 		return this.h == other.h && this.m == other.m && this.s == other.s;
 	}
+
+	@Override
+	public int hashCode() {
+		return this.h;
+	}
+	
+	public int totalSeconds() {
+		return this.h * 3600 + this.m * 60 + this.s;
+	}
+
+	@Override
+	public int compareTo(Time other) {
+		return  this.totalSeconds() - other.totalSeconds(); 
+	}
 }
 
 public class SortTimes {
 	public static void main(String[] args) {
-		var times = new HashSet<Time>();
+		var times = new TreeSet<Time>();
 		times.add(new Time(10, 10, 10));
 		times.add(new Time(10, 20, 30));
 		times.add(new Time(10, 10, 10));
 		times.add(new Time(1, 2, 3));
+		times.add(new Time(5, 5, 5));
 
 		for (var t : times)
 			System.out.println(t);
 
-		var localTimes = new HashSet<LocalTime>();
-		localTimes.add(LocalTime.of(10, 10, 10));
-		localTimes.add(LocalTime.of(10, 10, 10));
-		localTimes.add(LocalTime.of(1, 2, 3));
-
-		for (var t : localTimes)
-			System.out.println(t);
+//		var localTimes = new HashSet<LocalTime>();
+//		localTimes.add(LocalTime.of(10, 10, 10));
+//		localTimes.add(LocalTime.of(10, 10, 10));
+//		localTimes.add(LocalTime.of(1, 2, 3));
+//
+//		for (var t : localTimes)
+//			System.out.println(t);
 
 	}
 }
